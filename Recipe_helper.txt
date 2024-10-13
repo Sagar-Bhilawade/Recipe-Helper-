@@ -1,0 +1,17 @@
+----------------Recipe Helper Webapp------------
+
+------------------------------------------------
+Tasks to do ;
+.Create Recipe Entity with fields as :  Long Id, String title , User user,String image, String desc , boolean vegeterian, LocalDataTime createdAt ,List<Long> likes
+.Create service layer sepration for user
+.Create Recipe service
+.Recipe service methods like :
+    1.createRecipe
+	2.findRecipeByID
+	3.DeleteRecipe
+	4.UpdateRecipe
+	5.findAllRecipe
+	6.likeRecipe----recipeid and userid----if already liked  do unlike
+.Write all its implementation service implementation
+.Create Recipe repository
+ 
