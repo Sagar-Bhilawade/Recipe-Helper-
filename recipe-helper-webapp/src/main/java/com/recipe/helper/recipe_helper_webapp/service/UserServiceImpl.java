@@ -8,6 +8,7 @@ import com.recipe.helper.recipe_helper_webapp.repository.RecipeRepository;
 import com.recipe.helper.recipe_helper_webapp.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,11 +20,19 @@ public class UserServiceImpl implements IUserService {
     private UserRepository userRepository;
     @Autowired
     private RecipeRepository recipeRepository;
+
+
+    private final PasswordEncoder encoder;
+
+    public UserServiceImpl(PasswordEncoder encoder) {
+        this.encoder = encoder;
+    }
+
     @Override
     public User createUser(User user) {
         User newUser= null;
         if(userRepository.findByEmail(user.getEmail()).isEmpty())
-        {
+        {    user.setPassword(encoder.encode(user.getPassword()));
              newUser = userRepository.save(user);
 
         }
