@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping("/signin")
-    public ResponseEntity<User> getUserByEmailAndPassword(@Valid @RequestBody SignInRequest signInRequest){
+    public ResponseEntity<String> getUserByEmailAndPassword(@Valid @RequestBody SignInRequest signInRequest){
         return new ResponseEntity<>(userService.getUserByEmailAndPassword(signInRequest.getEmail(), signInRequest.getPassword()), HttpStatus.OK);
     }
 

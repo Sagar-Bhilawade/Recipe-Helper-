@@ -10,7 +10,7 @@ public interface IUserService {
     public String deleteUser(Long userId);
     public List<User> getAllUsers();
 
-    public User getUserByEmailAndPassword(String email, String password);
+    public String getUserByEmailAndPassword(String email, String password);
     public List<Recipe> getUserLikedRecipes(Long userId);
 
 }

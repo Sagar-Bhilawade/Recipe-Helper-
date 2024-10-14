@@ -6,8 +6,12 @@ import com.recipe.helper.recipe_helper_webapp.exceptions.DuplicateUserEmailExcep
 import com.recipe.helper.recipe_helper_webapp.exceptions.UserNotFoundException;
 import com.recipe.helper.recipe_helper_webapp.repository.RecipeRepository;
 import com.recipe.helper.recipe_helper_webapp.repository.UserRepository;
+import com.recipe.helper.recipe_helper_webapp.security.JWTUtils;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +24,12 @@ public class UserServiceImpl implements IUserService {
     private UserRepository userRepository;
     @Autowired
     private RecipeRepository recipeRepository;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JWTUtils jwtUtils;
 
 
     private final PasswordEncoder encoder;
@@ -57,9 +67,14 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User getUserByEmailAndPassword(String email, String password) {
-        userRepository.findByEmail(email).orElseThrow(()-> new UserNotFoundException("User does not exist with id :: "+email));
-       return userRepository.findByEmailAndPassword(email, password).orElseThrow(()->new UserNotFoundException("Password is incorrect for emailId : "+email));
+    public String getUserByEmailAndPassword(String email, String password) {
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+       // userRepository.findByEmail(email).orElseThrow(()-> new UserNotFoundException("User does not exist with id :: "+email));
+       //return userRepository.findByEmailAndPassword(email, password).orElseThrow(()->new UserNotFoundException("Password is incorrect for emailId : "+email));
+        if(authentication.isAuthenticated())
+            return jwtUtils.generateToken(email);
+
+        return null;
 
     }
 
