@@ -1,0 +1,12 @@
+html, :host {
+  line-height: 1.5;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  -webkit-text-size-adjust: 100%; /* For older Safari */
+  text-size-adjust: 100%;         /* For modern browsers */
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

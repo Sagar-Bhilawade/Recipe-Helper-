@@ -1,0 +1,37 @@
+<mat-toolbar class="flex items-center justify-between navbar">
+  <div>
+    <span>Recipe Helper</span>
+  </div>
+
+  <!-- Left side: Title and Navigation Buttons -->
+  <div class="nav-buttons">
+    <button mat-button routerLink="/favorites">Favorites</button>
+    <button mat-button routerLink="/recipes">My Recipes</button>
+    <button mat-button routerLink="/about">About</button>
+  </div>
+
+  <!-- Spacer to push the rest of the content to the right -->
+  <span class="spacer"></span>
+
+  <!-- Right side: Icon Buttons -->
+  <div class="icon-buttons">
+    <button mat-icon-button class="example-icon logout-icon" aria-label="Logout">
+      <mat-icon>logout</mat-icon> <!-- Use lowercase for Material icons -->
+      </button>
+    <button mat-icon-button class="example-icon" aria-label="Share">
+      <mat-icon>share</mat-icon>
+    </button>
+
+    <!-- Menu icon for mobile view -->
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/favorites">Favorites</button>
+      <button mat-menu-item routerLink="/recipes">My Recipes</button>
+      <button mat-menu-item routerLink="/about">About</button>
+  </mat-menu>
+</mat-toolbar>

@@ -1,0 +1,43 @@
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(245, 239, 244);
+  .nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+
+    button {
+      margin: 0 8px;
+    }
+  }
+
+  .icon-buttons {
+    display: flex;
+    align-items: center;
+
+    button {
+      margin-left: 8px;
+    }
+  }
+}
+
+// Spacer to allow flexibility
+.spacer {
+  flex: 1;
+}
+
+// Media Queries
+@media (max-width: 600px) {
+  .nav-buttons {
+    display: none !important; // Hide navigation buttons
+  }
+}
+
+@media (min-width: 601px) {
+  .nav-buttons {
+    display: flex !important; // Show navigation buttons
+  }
+}
+
+
