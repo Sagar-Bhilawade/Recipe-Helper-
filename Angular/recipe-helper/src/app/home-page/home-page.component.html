@@ -1,0 +1,18 @@
+<div class="recipe-cards-container">
+  @for (recipe of recipes; track $index) {
+
+  <app-recipe-card />
+  }
+</div>
+
+<!-- Display message if there are no recipes -->
+<div>
+ @if (!recipes.length) {
+  <h1>No Recipes exist</h1>
+ }
+ <div class="add-button-container fixed right-10 bottom-10">
+  <button mat-fab color="primary" [routerLink]="'/create-edit-recipe'">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+</div>

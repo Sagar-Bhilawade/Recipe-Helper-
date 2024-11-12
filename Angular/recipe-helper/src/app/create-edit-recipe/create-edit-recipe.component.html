@@ -1,0 +1,56 @@
+<div class="flex items-center justify-center min-h-screen">
+  <form class="bg-sky-200 shadow-md rounded-lg p-6 w-full max-w-md">
+    <!-- Form Header -->
+    <div class="mb-6 text-center">
+      <h2 class="text-xl font-semibold text-gray-700">Create Recipe</h2>
+    </div>
+
+    <!-- Title Field -->
+    <div class="mb-4">
+      <label for="title" class="block text-gray-700 font-medium mb-2">Title</label>
+      <input type="text" id="title"
+             class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+             required
+             [(ngModel)]="recipe.title" name="title">
+    </div>
+
+    <!-- Description Field -->
+    <div class="mb-4">
+      <label for="description" class="block text-gray-700 font-medium mb-2">Description</label>
+      <input type="text" id="description"
+             class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+             required
+             [(ngModel)]="recipe.description" name="description">
+    </div>
+
+    <!-- Image Upload Field -->
+    <div class="mb-4">
+      <label for="image" class="block text-gray-700 font-medium mb-2">Image</label>
+      <input type="file" id="image"
+             class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+             required
+             [(ngModel)]="recipe.image" name="image" accept="image/*">
+    </div>
+
+    <!-- Steps Field -->
+    <div class="mb-4">
+      <label for="steps" class="block text-gray-700 font-medium mb-2">Steps to Make</label>
+      <textarea id="steps" rows="4"
+                class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                [(ngModel)]="recipe.stepsToMake" name="stepsToMake"></textarea>
+    </div>
+
+    <!-- Vegetarian Checkbox -->
+    <div class="mb-4 flex items-center">
+      <input type="checkbox" id="vegetarian"
+             class="mr-2 focus:ring-2 focus:ring-blue-500"
+             [(ngModel)]="recipe.vegetarian" name="vegetarian">
+      <label for="vegetarian" class="text-gray-700 font-medium">Vegetarian</label>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="w-full bg-pink-500 text-white font-medium py-2 rounded-lg hover:bg-pink-800">
+      Submit
+    </button>
+  </form>
+</div>
